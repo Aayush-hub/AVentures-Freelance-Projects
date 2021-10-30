@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset=utf-8>
+    <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"
+        integrity="sha256-h0cGsrExGgcZtSZ/fRz4AwV+Nn6Urh/3v3jFRQ0w9dQ=" crossorigin="anonymous"></script>
+    <title>SAMPLE PROJECT</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* HEADER DESIGNS */
+        .header {
+            position: fixed;
+            width: 100%;
+            left: 0;
+            display: flex;
+            background: #000;
+            z-index: 1;
+        }
+
+        .header {
+            top: 0;
+        }
+
+        .texts {
+            color: #fff;
+            padding: 1px 5px;
+            font-weight: bold;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+
+        /* CANVAS MAIN LAYOUT */
+        #canvas {
+            object-fit: scale-down;
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: scale-down;
+            z-index: 0;
+            margin: 0;
+            overflow: hidden;
+            position: fixed;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)), url(back.png);
+        }
+
+        /*   SPINNER ANIMATION */
+        .spinner {
+            height: 85px;
+            width: 85px;
+            -webkit-animation: rotation .8s linear infinite;
+            -moz-animation: rotation .8s linear infinite;
+            -o-animation: rotation .8s linear infinite;
+            animation: rotation .8s linear infinite;
+            border-left: 10px solid #0096f0;
+            border-right: 10px solid #0096f0;
+            border-bottom: 10px solid #0096f0;
+            border-top: 10px solid #6400c8;
+            border-radius: 100%;
+            background-color: #c864fa
+        }
+
+        @-webkit-keyframes rotation {
+            from {
+                -webkit-transform: rotate(0)
+            }
+
+            to {
+                -webkit-transform: rotate(360deg)
+            }
+        }
+
+        @-moz-keyframes rotation {
+            from {
+                -moz-transform: rotate(0)
+            }
+
+            to {
+                -moz-transform: rotate(360deg)
+            }
+        }
+
+        @-o-keyframes rotation {
+            from {
+                -o-transform: rotate(0)
+            }
+
+            to {
+                -o-transform: rotate(360deg)
+            }
+        }
+
+        @keyframes rotation {
+            from {
+                transform: rotate(0)
+            }
+
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .loader {
+            position: relative;
+        }
+
+        .loader {
+            position: absolute;
+            top: calc(50% - 8em);
+            left: calc(50% - 5em);
+        }
+
+        #status {
+            font-weight: bolder;
+            font-size: 20px;
+        }
+
+        /* FOOTER STYLES */
+        #statusBarHolder {
+            width: 100%;
+            background: #000;
+            color: #fff;
+            font: 15px Arial;
+            text-align: center;
+            height: 25px;
+            cursor: default;
+            position: fixed;
+            padding: 5px;
+            bottom: 0px;
+            padding-bottom: constant(safe-area-inset-bottom);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        #statusBar {
+            flex-direction: row;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 12px;
+        }
+
+        .statusBarContainer {
+            display: flex;
+            flex: 0 1 auto;
+            flex-basis: 100%;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loader">
+        <figure id=spinner style=overflow:visible>
+            <div class=spinner></div>
+        </figure>
+        <center>
+            <div id=status>Downloading...</div>
+        </center>
+        <div>
+            <center><progress class="progress_bar" id=progress max=100 value=0></progress></center>
+        </div>
+    </div>
+    <div class="header">
+    </div>
+
+    <div><canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas></div>
+
+    <!-- EXTERNAL SCRIPTS -->
+    <script src="omni.js"></script>
+    <script async src=omniMich.js></script>
+</body>
+
+</html>
